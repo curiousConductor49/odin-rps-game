@@ -1,5 +1,5 @@
 // FUNCTION getComputerChoice
-function getComputerChoice /* PASS IN: N/A */ () {
+function getComputerChoice /* PASS IN: none */ () {
 // INIT variable randomNum to a random number between 1 and 3, inclusive
 const randomNum = Math.floor(Math.random() * 3) + 1; 
 // IF random number is 1 THEN
@@ -14,11 +14,13 @@ if (randomNum === 1) {
 }
 // ENDIF
 // PASS OUT: string value (”rock”, “paper”, or “scissors)
-// ENDFUNCTION
 }
+// ENDFUNCTION
 
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
+// FUNCTION getHumanChoice
+function getHumanChoice /* PASS IN: none */ () {
+// OBTAIN user choice between “rock”, “paper”, or “scissors”
+const humanChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
+// PASS OUT: none
+}
+// ENDFUNCTION
