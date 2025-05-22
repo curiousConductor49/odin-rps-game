@@ -24,3 +24,8 @@ const humanChoice = prompt("Please pick one of the following options: \n• Rock
 // PASS OUT: none
 }
 // ENDFUNCTION
+
+// INIT variable humanScore to 0
+const humanScore = 0;
+// INIT variable computerScore to 0
+const computerScore = 0;
