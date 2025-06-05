@@ -19,9 +19,10 @@ if (randomNum === 1) {
 
 // FUNCTION getHumanChoice
 function getHumanChoice /* PASS IN: none */ () {
-// OBTAIN user choice between “rock”, “paper”, or “scissors”
-const humanHandChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
-// PASS OUT: none
+    // OBTAIN user choice between “rock”, “paper”, or “scissors”
+    const humanHandChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
+    // PASS OUT: user choice
+    return humanHandChoice;
 }
 // ENDFUNCTION
 
@@ -31,8 +32,16 @@ const humanScore = 0;
 const computerScore = 0;
 
 // FUNCTION playRound 
+function playRound (humanChoice, computerChoice) {
     // Pass In: humanChoice, computerChoice parameters (use respective   functions as callbacks for arguments)
-    // COMPUTE case-insensitivity for humanChoice by using .toLowerCase() on its return value
+    // COMPUTE case-insensitivity for humanChoice by converting its return value to all lowercase
+    const humanChoiceLower = humanChoice.toLowerCase();
+    // console.log(humanChoiceLower);
+}
+
+// const humanSelection = getHumanChoice();
+// playRound(humanSelection);
+    
     // IF humanChoice is "rock" THEN
         // IF computerChoice is "rock" THEN
             // PRINT "Nobody wins!"
