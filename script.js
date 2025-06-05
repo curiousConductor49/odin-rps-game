@@ -14,8 +14,8 @@ if (randomNum === 1) {
 }
 // ENDIF
 // PASS OUT: string value (”rock”, “paper”, or “scissors)
-}
 // ENDFUNCTION
+}
 
 // FUNCTION getHumanChoice
 function getHumanChoice /* PASS IN: none */ () {
@@ -23,8 +23,8 @@ function getHumanChoice /* PASS IN: none */ () {
     const humanHandChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
     // PASS OUT: user choice
     return humanHandChoice;
+    // ENDFUNCTION
 }
-// ENDFUNCTION
 
 // INIT variable humanScore to 0
 let humanScore = 0;
@@ -57,6 +57,7 @@ function playRound (humanChoice, computerChoice) {
             // INCREMENT humanScore
             humanScore += 1;
         }
+        //ENDIF
     } 
     // ELSE IF humanChoice is "paper" THEN
     else if (humanChoice === "paper") {
@@ -78,7 +79,8 @@ function playRound (humanChoice, computerChoice) {
             console.log(`You lose! ${humanChoice} can't beat ${computerChoice}.`);
             // INCREMENT computerScore
             computerScore += 1;
-        } 
+        }
+        //ENDIF
     }
     // ELSE IF humanChoice is "scissors" THEN
     else if (humanChoice === "scissors") {
@@ -101,11 +103,14 @@ function playRound (humanChoice, computerChoice) {
             // PRINT "Nobody wins!"  
             console.log(`${humanChoice} is the same as ${computerChoice}! Nobody wins!`);        
         }
+        //ENDIF
     }
+    //ENDIF
+    //ENDFUNCTION
 }
 
 const humanPick = getHumanChoice();
 const computerPick = getComputerChoice();
 playRound(humanPick, computerPick);
-    
+
     
