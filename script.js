@@ -31,86 +31,103 @@ let humanScore = 0;
 // INIT variable computerScore to 0
 let computerScore = 0;
 
-// FUNCTION playRound 
-function playRound (humanChoice, computerChoice) {
-    // Pass In: humanChoice, computerChoice parameters (use respective   functions as callbacks for arguments)
-    // COMPUTE case-insensitivity for humanChoice by converting its return value to all lowercase
-    const humanChoiceLower = humanChoice.toLowerCase();
-    // IF humanChoice is "rock" THEN
-    if (humanChoice === "rock") {
-        // IF computerChoice is "rock" THEN
-        if (computerChoice === "rock") {
-            // PRINT "Nobody wins!"
-            console.log(`${humanChoice} is the same as ${computerChoice}! Nobody wins!`);
+// FUNCTION playGame
+function playGame (roundNum) {
+    // Pass In: parameter for the number of rounds to be played
+
+    // FUNCTION playRound 
+    function playRound (humanChoice, computerChoice) {
+        // Pass In: humanChoice, computerChoice parameters (use respective   functions as callbacks for arguments)
+        // COMPUTE case-insensitivity for humanChoice by converting its return value to all lowercase
+        const humanChoiceLower = humanChoice.toLowerCase();
+        // IF humanChoice is "rock" THEN
+        if (humanChoiceLower === "rock") {
+            // IF computerChoice is "rock" THEN
+            if (computerChoice === "rock") {
+                // PRINT "Nobody wins!"
+                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
+            }
+            // ELSE IF computerChoice is "paper" THEN
+            else if (computerChoice === "paper") {
+                // PRINT "You lose! humanChoice can't beat computerChoice."
+                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
+                // INCREMENT computerScore
+                computerScore += 1;
+            }
+            // ELSE IF computerChoice is "scissors" THEN
+            else if (computerChoice === "scissors") {
+                // PRINT "You win! humanChoice beats computerChoice."
+                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}!`);
+                // INCREMENT humanScore
+                humanScore += 1;
+            }
+            // ENDIF
+        } 
+        // ELSE IF humanChoice is "paper" THEN
+        else if (humanChoiceLower === "paper") {
+            // IF computerChoice is "rock" THEN
+            if (computerChoice === "rock") {
+                // PRINT "You win! humanChoice beats computerChoice."
+                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
+                // INCREMENT humanScore
+                humanScore += 1;
+            }
+            // ELSE IF computerChoice is "paper" THEN
+            else if (computerChoice === "paper") {
+                // PRINT "Nobody wins!"
+                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
+            }
+            // ELSE IF computerChoice is "scissors" THEN
+            else if (computerChoice === "scissors") {
+                // PRINT "You lose! humanChoice can't beat computerChoice."
+                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}.`);
+                // INCREMENT computerScore
+                computerScore += 1;
+            }
+            // ENDIF
         }
-        // ELSE IF computerChoice is "paper" THEN
-        else if (computerChoice === "paper") {
-            // PRINT "You lose! humanChoice can't beat computerChoice."
-            console.log(`You lose! ${humanChoice} can't beat ${computerChoice}!`);
-            // INCREMENT computerScore
-            computerScore += 1;
+        // ELSE IF humanChoice is "scissors" THEN
+        else if (humanChoiceLower === "scissors") {
+            // IF computerChoice is "rock" THEN
+            if (computerChoice === "rock") {
+                // PRINT "You lose! humanChoice can't beat computerChoice."
+                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
+                // INCREMENT computerScore
+                computerScore += 1;
+            }
+            // ELSE IF computerChoice is "paper" THEN
+            else if (computerChoice === "paper") {
+                // PRINT "You win! humanChoice beats computerChoice."
+                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
+                // INCREMENT humanScore
+                humanScore += 1;
+            }
+            // ELSE IF computerChoice is "scissors" THEN
+            else if (computerChoice === "scissors") {
+                // PRINT "Nobody wins!"  
+                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);    
+            }
+            // ENDIF
         }
-        // ELSE IF computerChoice is "scissors" THEN
-        else if (computerChoice === "scissors") {
-            // PRINT "You win! humanChoice beats computerChoice."
-            console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
-            // INCREMENT humanScore
-            humanScore += 1;
-        }
-        //ENDIF
-    } 
-    // ELSE IF humanChoice is "paper" THEN
-    else if (humanChoice === "paper") {
-        // IF computerChoice is "rock" THEN
-        if (computerChoice === "rock") {
-            // PRINT "You win! humanChoice beats computerChoice."
-            console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-            // INCREMENT humanScore
-            humanScore += 1;
-        }
-        // ELSE IF computerChoice is "paper" THEN
-        else if (computerChoice === "paper") {
-            // PRINT "Nobody wins!"
-            console.log(`${humanChoice} is the same as ${computerChoice}! Nobody wins!`);
-        }
-        // ELSE IF computerChoice is "scissors" THEN
-        else if (computerChoice === "scissors") {
-            // PRINT "You lose! humanChoice can't beat computerChoice."
-            console.log(`You lose! ${humanChoice} can't beat ${computerChoice}.`);
-            // INCREMENT computerScore
-            computerScore += 1;
-        }
-        //ENDIF
+        // ENDIF
+        // ENDFUNCTION
     }
-    // ELSE IF humanChoice is "scissors" THEN
-    else if (humanChoice === "scissors") {
-        // IF computerChoice is "rock" THEN
-        if (computerChoice === "rock") {
-            // PRINT "You lose! humanChoice can't beat computerChoice."
-            console.log(`You lose! ${humanChoice} can't beat ${computerChoice}!`);
-            // INCREMENT computerScore
-            computerScore += 1;
-        }
-        // ELSE IF computerChoice is "paper" THEN
-        else if (computerChoice === "paper") {
-            // PRINT "You win! humanChoice beats computerChoice."
-            console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-            // INCREMENT humanScore
-            humanScore += 1;
-        }
-        // ELSE IF computerChoice is "scissors" THEN
-        else if (computerChoice === "scissors") {
-            // PRINT "Nobody wins!"  
-            console.log(`${humanChoice} is the same as ${computerChoice}! Nobody wins!`);        
-        }
-        //ENDIF
+
+    // INIT let variables to store choice functions 
+    let humanPick;
+    let computerPick;
+
+    // FOR five times
+    for (let i = 0; i < roundNum; i++) {
+        // SET let variable to store human choice function
+        humanPick = getHumanChoice();
+        // SET let variable to store computer choice function
+        computerPick = getComputerChoice();
+        // Call: playRound
+        playRound(humanPick, computerPick);
+        // ENDFOR
     }
-    //ENDIF
-    //ENDFUNCTION
+    // ENDFUNCTION
 }
 
-const humanPick = getHumanChoice();
-const computerPick = getComputerChoice();
-playRound(humanPick, computerPick);
-
-    
+playGame(5);
