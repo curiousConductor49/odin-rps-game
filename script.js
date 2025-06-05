@@ -20,7 +20,7 @@ if (randomNum === 1) {
 // FUNCTION getHumanChoice
 function getHumanChoice /* PASS IN: none */ () {
 // OBTAIN user choice between “rock”, “paper”, or “scissors”
-const humanChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
+const humanHandChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
 // PASS OUT: none
 }
 // ENDFUNCTION
