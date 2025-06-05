@@ -1,7 +1,7 @@
 // FUNCTION getComputerChoice
 function getComputerChoice /* PASS IN: none */ () {
 // INIT variable randomNum to a random number between 1 and 3, inclusive
-const randomNum = Math.floor(Math.random() * 3) + 1; 
+const randomNum = Math.floor(Math.random() * 3) + 1;
 // IF random number is 1 THEN
 if (randomNum === 1) {
     // PRINT string value “rock”
@@ -27,45 +27,59 @@ function getHumanChoice /* PASS IN: none */ () {
 // ENDFUNCTION
 
 // INIT variable humanScore to 0
-const humanScore = 0;
+let humanScore = 0;
 // INIT variable computerScore to 0
-const computerScore = 0;
+let computerScore = 0;
 
 // FUNCTION playRound 
 function playRound (humanChoice, computerChoice) {
     // Pass In: humanChoice, computerChoice parameters (use respective   functions as callbacks for arguments)
     // COMPUTE case-insensitivity for humanChoice by converting its return value to all lowercase
     const humanChoiceLower = humanChoice.toLowerCase();
-    // console.log(humanChoiceLower);
+    // IF humanChoice is "rock" THEN
+    if (humanChoice === "rock") {
+        // IF computerChoice is "rock" THEN
+        if (computerChoice === "rock") {
+            // PRINT "Nobody wins!"
+            console.log("Nobody wins!");
+        }
+        // ELSE IF computerChoice is "paper" THEN
+        else if (computerChoice === "paper") {
+            // PRINT "You lose! humanChoice can't beat computerChoice."
+            console.log(`You lose! ${humanChoice} can't beat ${computerChoice}!`);
+            // INCREMENT computerScore
+            computerScore += 1;
+        }
+        // ELSE IF computerChoice is "scissors" THEN
+        else if (computerChoice === "scissors") {
+            // PRINT "You win! humanChoice beats computerChoice."
+            console.log(`You lose! ${humanChoice} beats ${computerChoice}!`);
+            // INCREMENT humanScore
+            computerScore += 1;
+        }
+    }
 }
 
-// const humanSelection = getHumanChoice();
-// playRound(humanSelection);
+const humanPick = getHumanChoice();
+const computerPick = getComputerChoice();
+playRound(humanPick, computerPick);
     
-    // IF humanChoice is "rock" THEN
-        // IF computerChoice is "rock" THEN
-            // PRINT "Nobody wins!"
-        // IF computerChoice is "paper" THEN
-            // PRINT "You lose! humanChoice can't beat computerChoice."
-            // INCREMENT computerScore
-        // IF computerChoice is "scissors" THEN
-            // PRINT "You win! humanChoice beats computerChoice."
-            // INCREMENT humanScore
+    
     // ELSE IF humanChoice is "paper" THEN
        // IF computerChoice is "rock" THEN
           // PRINT "You win! humanChoice beats computerChoice."
             // INCREMENT humanScore
-        // IF computerChoice is "paper" THEN
+        // ELSE IF computerChoice is "paper" THEN
             // PRINT "Nobody wins!"
-        // IF computerChoice is "scissors" THEN
+        // ELSE IF computerChoice is "scissors" THEN
             // PRINT "You lose! humanChoice can't beat computerChoice."
             // INCREMENT computerScore
     // ELSE IF humanChoice is "scissors" THEN
         // IF computerChoice is "rock" THEN
             // PRINT "You lose! humanChoice can't beat computerChoice."
             // INCREMENT computerScore
-        // IF computerChoice is "paper" THEN
+        // ELSE IF computerChoice is "paper" THEN
             // PRINT "You win! humanChoice beats computerChoice."
             // INCREMENT humanScore
-        // IF computerChoice is "scissors" THEN
+        // ELSE IF computerChoice is "scissors" THEN
             // PRINT "Nobody wins!"
