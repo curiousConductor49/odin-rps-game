@@ -29,3 +29,34 @@ const humanChoice = prompt("Please pick one of the following options: \n• Rock
 const humanScore = 0;
 // INIT variable computerScore to 0
 const computerScore = 0;
+
+// FUNCTION playRound 
+    // Pass In: humanChoice, computerChoice parameters (use respective   functions as callbacks for arguments)
+    // COMPUTE case-insensitivity for humanChoice by using .toLowerCase() on its return value
+    // IF humanChoice is "rock" THEN
+        // IF computerChoice is "rock" THEN
+            // PRINT "Nobody wins!"
+        // IF computerChoice is "paper" THEN
+            // PRINT "You lose! humanChoice can't beat computerChoice."
+            // INCREMENT computerScore
+        // IF computerChoice is "scissors" THEN
+            // PRINT "You win! humanChoice beats computerChoice."
+            // INCREMENT humanScore
+    // ELSE IF humanChoice is "paper" THEN
+       // IF computerChoice is "rock" THEN
+          // PRINT "You win! humanChoice beats computerChoice."
+            // INCREMENT humanScore
+        // IF computerChoice is "paper" THEN
+            // PRINT "Nobody wins!"
+        // IF computerChoice is "scissors" THEN
+            // PRINT "You lose! humanChoice can't beat computerChoice."
+            // INCREMENT computerScore
+    // ELSE IF humanChoice is "scissors" THEN
+        // IF computerChoice is "rock" THEN
+            // PRINT "You lose! humanChoice can't beat computerChoice."
+            // INCREMENT computerScore
+        // IF computerChoice is "paper" THEN
+            // PRINT "You win! humanChoice beats computerChoice."
+            // INCREMENT humanScore
+        // IF computerChoice is "scissors" THEN
+            // PRINT "Nobody wins!"
