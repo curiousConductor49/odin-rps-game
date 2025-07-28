@@ -1,6 +1,3 @@
-// TODO
-// Announce a winner after 5 rounds (have to count the rounds somehow)
-
 // Declare button and div constants
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
@@ -13,9 +10,10 @@ const roundReport = document.querySelector(".round-report");
 let humanPick;
 let computerPick;
 
-// Initialize variables humanScore and computerScore to 0
+// Initialize score variables
 let humanScore = 0;
 let computerScore = 0;
+let winningScore = 0;
 
 // Display results in DOM
 scoreReport.textContent = `Your Score: ${humanScore} | Computer Score: ${computerScore}`;
@@ -40,28 +38,32 @@ function getComputerChoice () {
 function getHumanChoice (event) {
     // Obtain and return user choice between “rock”, “paper”, or “scissors”
     const humanHandChoice = event.target.value;
-    console.log(humanHandChoice);
     return humanHandChoice;
 }
 
 // Add event listeners to player selection buttons
 rockBtn.addEventListener("click", (e) => {
-    humanPick = getHumanChoice(e);
-    computerPick = getComputerChoice();
-    playRound(humanPick, computerPick);
+    playGame(e);
 });
 
 paperBtn.addEventListener("click", (e) => {
-    humanPick = getHumanChoice(e);
-    computerPick = getComputerChoice();
-    playRound(humanPick, computerPick);
+    playGame(e);
 });
 
 scissorsBtn.addEventListener("click", (e) => {
+    playGame(e);
+});
+
+function playGame(e) {
     humanPick = getHumanChoice(e);
     computerPick = getComputerChoice();
     playRound(humanPick, computerPick);
-});
+    if (humanScore === 5) {
+        displayDiv.textContent = "You win!";
+    } else if (computerScore === 5) {
+        displayDiv.textContent = "Computer wins!";
+    }
+}
 
 // Declare playRound function to compare human and computer choices
 function playRound (humanChoice, computerChoice) {
@@ -112,18 +114,3 @@ function playRound (humanChoice, computerChoice) {
     // Update display div
     scoreReport.textContent = `Your Score: ${humanScore} | Computer Score: ${computerScore}`;
 }
-
-// function playGame () {
-//     // Control game based on winner
-//     let winningScore = 0;
-//     if (winningScore === 5) {
-//         if (humanScore === winningScore) {
-//             displayDiv.textContent = "You win!";
-//         } else if (computerScore === winningScore) {
-//             displayDiv.textContent = "Computer wins!";
-//         }
-//     }
-// }
-
-// playGame();
-// playGame(5);
