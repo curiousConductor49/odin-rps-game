@@ -1,3 +1,12 @@
+// Declare button constants
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+// Initialize let variables for future storage of choice functions 
+let humanPick;
+let computerPick;
+
 // Declare getComputerChoice function
 function getComputerChoice () {
     // Initialize a variable to a random number between 1 and 3, inclusive
@@ -14,9 +23,10 @@ function getComputerChoice () {
 }
 
 // Declare getHumanChoice function
-function getHumanChoice () {
+function getHumanChoice (event) {
     // Obtain and return user choice between “rock”, “paper”, or “scissors”
-    const humanHandChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
+    const humanHandChoice = event.target.value;
+    console.log(humanHandChoice);
     return humanHandChoice;
 }
 
@@ -25,66 +35,74 @@ let humanScore = 0;
 let computerScore = 0;
 
 // Declare playGame function
-function playGame (roundNum) {
-    // Declare playRound function to compare human and computer choices
-    function playRound (humanChoice, computerChoice) {
-        // Ensure case-insensitivity for humanChoice by converting its return value to all lowercase
-        const humanChoiceLower = humanChoice.toLowerCase();
+// function playGame (roundNum) {}
 
-        // Use nested if-else statements to compare choices
-        // If-else block for human choice being rock
-        if (humanChoiceLower === "rock") {
-            if (computerChoice === "rock") {
-                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
-            }
-            else if (computerChoice === "paper") {
-                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
-                computerScore += 1;
-            }
-            else if (computerChoice === "scissors") {
-                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}!`);
-                humanScore += 1;
-            }
-        } 
-        // Else-if block for human choice being paper
-        else if (humanChoiceLower === "paper") {
-            if (computerChoice === "rock") {
-                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
-                humanScore += 1;
-            }
-            else if (computerChoice === "paper") {
-                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
-            }
-            else if (computerChoice === "scissors") {
-                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}.`);
-                computerScore += 1;
-            }
+// Add event listeners to player selection buttons
+rockBtn.addEventListener("click", (e) => {
+    humanPick = getHumanChoice(e);
+    computerPick = getComputerChoice();
+    playRound(humanPick, computerPick);
+});
+
+paperBtn.addEventListener("click", (e) => {
+    humanPick = getHumanChoice(e);
+    computerPick = getComputerChoice();
+    playRound(humanPick, computerPick);
+});
+
+scissorsBtn.addEventListener("click", (e) => {
+    humanPick = getHumanChoice(e);
+    computerPick = getComputerChoice();
+    playRound(humanPick, computerPick);
+});
+
+// Declare playRound function to compare human and computer choices
+function playRound (humanChoice, computerChoice) {
+    // Ensure case-insensitivity for humanChoice by converting its return value to all lowercase
+    const humanChoiceLower = humanChoice.toLowerCase();
+
+    // Use nested if-else statements to compare choices
+    // If-else block for human choice being rock
+    if (humanChoiceLower === "rock") {
+        if (computerChoice === "rock") {
+            console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
         }
-        // Else-if block for human choice being scissors
-        else if (humanChoiceLower === "scissors") {
-            if (computerChoice === "rock") {
-                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
-                computerScore += 1;
-            }
-            else if (computerChoice === "paper") {
-                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
-                humanScore += 1;
-            }
-            else if (computerChoice === "scissors") {
-                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);    
-            }
+        else if (computerChoice === "paper") {
+            console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
+            computerScore += 1;
+        }
+        else if (computerChoice === "scissors") {
+            console.log(`You win! ${humanChoiceLower} beats ${computerChoice}!`);
+            humanScore += 1;
+        }
+    } 
+    // Else-if block for human choice being paper
+    else if (humanChoiceLower === "paper") {
+        if (computerChoice === "rock") {
+            console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
+            humanScore += 1;
+        }
+        else if (computerChoice === "paper") {
+            console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
+        }
+        else if (computerChoice === "scissors") {
+            console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}.`);
+            computerScore += 1;
         }
     }
-
-    // Initialize let variables for future storage of choice functions 
-    let humanPick;
-    let computerPick;
-
-    // Use a for loop to call playRound function
-    for (let i = 0; i < roundNum; i++) {
-        humanPick = getHumanChoice();
-        computerPick = getComputerChoice();
-        playRound(humanPick, computerPick);
+    // Else-if block for human choice being scissors
+    else if (humanChoiceLower === "scissors") {
+        if (computerChoice === "rock") {
+            console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
+            computerScore += 1;
+        }
+        else if (computerChoice === "paper") {
+            console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
+            humanScore += 1;
+        }
+        else if (computerChoice === "scissors") {
+            console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);    
+        }
     }
 }
 
