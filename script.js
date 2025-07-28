@@ -1,26 +1,3 @@
-// TODO
-// Announce a winner after 5 rounds (have to count the rounds somehow)
-
-// Declare button and div constants
-const rockBtn = document.querySelector(".rock");
-const paperBtn = document.querySelector(".paper");
-const scissorsBtn = document.querySelector(".scissors");
-const displayDiv = document.querySelector(".display");
-const scoreReport = document.querySelector(".score-report");
-const roundReport = document.querySelector(".round-report");
-
-// Initialize variables for future storage of choice functions 
-let humanPick;
-let computerPick;
-
-// Initialize variables humanScore and computerScore to 0
-let humanScore = 0;
-let computerScore = 0;
-
-// Display results in DOM
-scoreReport.textContent = `Your Score: ${humanScore} | Computer Score: ${computerScore}`;
-roundReport.textContent = "The round winner is...";
-
 // Declare getComputerChoice function
 function getComputerChoice () {
     // Initialize a variable to a random number between 1 and 3, inclusive
@@ -28,102 +5,87 @@ function getComputerChoice () {
 
     // If random number is 1, 2, or 3, return string for rock, paper, or scissors
     if (randomNum === 1) {
-        return "Rock";
+        return "rock";
     } else if (randomNum === 2) {
-        return "Paper";
+        return "paper";
     } else if (randomNum === 3) {
-        return "Scissors";
+        return "scissors";
     }
 }
 
 // Declare getHumanChoice function
-function getHumanChoice (event) {
+function getHumanChoice () {
     // Obtain and return user choice between “rock”, “paper”, or “scissors”
-    const humanHandChoice = event.target.value;
-    console.log(humanHandChoice);
+    const humanHandChoice = prompt("Please pick one of the following options: \n• Rock\n• Paper\n• Scissors");
     return humanHandChoice;
 }
 
-// Add event listeners to player selection buttons
-rockBtn.addEventListener("click", (e) => {
-    humanPick = getHumanChoice(e);
-    computerPick = getComputerChoice();
-    playRound(humanPick, computerPick);
-});
+// Initialize variables humanScore and computerScore to 0
+let humanScore = 0;
+let computerScore = 0;
 
-paperBtn.addEventListener("click", (e) => {
-    humanPick = getHumanChoice(e);
-    computerPick = getComputerChoice();
-    playRound(humanPick, computerPick);
-});
+// Declare playGame function
+function playGame (roundNum) {
+    // Declare playRound function to compare human and computer choices
+    function playRound (humanChoice, computerChoice) {
+        // Ensure case-insensitivity for humanChoice by converting its return value to all lowercase
+        const humanChoiceLower = humanChoice.toLowerCase();
 
-scissorsBtn.addEventListener("click", (e) => {
-    humanPick = getHumanChoice(e);
-    computerPick = getComputerChoice();
-    playRound(humanPick, computerPick);
-});
-
-// Declare playRound function to compare human and computer choices
-function playRound (humanChoice, computerChoice) {
-    // Use nested if-else statements to compare choices
-    // If-else block for human choice being rock
-    if (humanChoice === "Rock") {
-        if (computerChoice === "Rock") {
-            roundReport.textContent = `${humanChoice} is the same as ${computerChoice}! Nobody wins!`;
+        // Use nested if-else statements to compare choices
+        // If-else block for human choice being rock
+        if (humanChoiceLower === "rock") {
+            if (computerChoice === "rock") {
+                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
+            }
+            else if (computerChoice === "paper") {
+                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
+                computerScore += 1;
+            }
+            else if (computerChoice === "scissors") {
+                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}!`);
+                humanScore += 1;
+            }
+        } 
+        // Else-if block for human choice being paper
+        else if (humanChoiceLower === "paper") {
+            if (computerChoice === "rock") {
+                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
+                humanScore += 1;
+            }
+            else if (computerChoice === "paper") {
+                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);
+            }
+            else if (computerChoice === "scissors") {
+                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}.`);
+                computerScore += 1;
+            }
         }
-        else if (computerChoice === "Paper") {
-            roundReport.textContent = `You lose! ${humanChoice} can't beat ${computerChoice}!`;
-            ++computerScore;
-        }
-        else if (computerChoice === "Scissors") {
-            roundReport.textContent = `You win! ${humanChoice} beats ${computerChoice}!`;
-            ++humanScore;
-        }
-    } 
-    // Else-if block for human choice being paper
-    else if (humanChoice === "Paper") {
-        if (computerChoice === "Rock") {
-            roundReport.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
-            ++humanScore;
-        }
-        else if (computerChoice === "Paper") {
-            roundReport.textContent = `${humanChoice} is the same as ${computerChoice}! Nobody wins!`;
-        }
-        else if (computerChoice === "Scissors") {
-            roundReport.textContent = `You lose! ${humanChoice} can't beat ${computerChoice}.`;
-            ++computerScore;
-        }
-    }
-    // Else-if block for human choice being scissors
-    else if (humanChoice === "Scissors") {
-        if (computerChoice === "Rock") {
-            roundReport.textContent = `You lose! ${humanChoice} can't beat ${computerChoice}!`;
-            ++computerScore;
-        }
-        else if (computerChoice === "Paper") {
-            roundReport.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
-            ++humanScore;
-        }
-        else if (computerChoice === "Scissors") {
-            roundReport.textContent = `${humanChoice} is the same as ${computerChoice}! Nobody wins!`;
+        // Else-if block for human choice being scissors
+        else if (humanChoiceLower === "scissors") {
+            if (computerChoice === "rock") {
+                console.log(`You lose! ${humanChoiceLower} can't beat ${computerChoice}!`);
+                computerScore += 1;
+            }
+            else if (computerChoice === "paper") {
+                console.log(`You win! ${humanChoiceLower} beats ${computerChoice}.`);
+                humanScore += 1;
+            }
+            else if (computerChoice === "scissors") {
+                console.log(`${humanChoiceLower} is the same as ${computerChoice}! Nobody wins!`);    
+            }
         }
     }
 
-    // Update display div
-    scoreReport.textContent = `Your Score: ${humanScore} | Computer Score: ${computerScore}`;
+    // Initialize let variables for future storage of choice functions 
+    let humanPick;
+    let computerPick;
+
+    // Use a for loop to call playRound function
+    for (let i = 0; i < roundNum; i++) {
+        humanPick = getHumanChoice();
+        computerPick = getComputerChoice();
+        playRound(humanPick, computerPick);
+    }
 }
 
-// function playGame () {
-//     // Control game based on winner
-//     let winningScore = 0;
-//     if (winningScore === 5) {
-//         if (humanScore === winningScore) {
-//             displayDiv.textContent = "You win!";
-//         } else if (computerScore === winningScore) {
-//             displayDiv.textContent = "Computer wins!";
-//         }
-//     }
-// }
-
-// playGame();
-// playGame(5);
+playGame(5);
