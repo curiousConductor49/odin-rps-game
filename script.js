@@ -88,4 +88,4 @@ function playGame (roundNum) {
     }
 }
 
-playGame(5);
+// playGame(5);
