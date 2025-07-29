@@ -39,6 +39,19 @@ function getHumanChoice (event) {
     return event.target.value;
 }
 
+// Declare disablePlayerBtns function
+function togglePlayerBtns(toggleCheck) {
+    if (toggleCheck) {
+        rockBtn.setAttribute("disabled", true);
+        paperBtn.setAttribute("disabled", true);
+        scissorsBtn.setAttribute("disabled", true);
+    } else {
+        rockBtn.removeAttribute("disabled");
+        paperBtn.removeAttribute("disabled");
+        scissorsBtn.removeAttribute("disabled");
+    }
+}
+
 // Declare playGame function
 function playGame(e) {
     // Obtain human and computer choices
@@ -51,9 +64,11 @@ function playGame(e) {
     if (humanScore === 5) {
         gameReport.textContent = "You win the game!";
         restartBtn.hidden = false;
+        togglePlayerBtns(true);
     } else if (computerScore === 5) {
         gameReport.textContent = "Computer wins the game!";
         restartBtn.hidden = false;
+        togglePlayerBtns(true);
     }
 }
 
@@ -114,6 +129,7 @@ function playRound (humanChoice, computerChoice) {
 }
 
 function restartGame() {
+    togglePlayerBtns(false);
     humanScore = 0;
     computerScore = 0;
     gameReport.textContent = "";
@@ -134,4 +150,7 @@ scissorsBtn.addEventListener("click", (e) => {
     playGame(e);
 });
 
-restartBtn.addEventListener("click", () => {restartGame()});
+restartBtn.addEventListener("click", () => {
+    restartGame();
+    restartBtn.hidden = true;
+});
