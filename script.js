@@ -2,18 +2,20 @@
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
+const restartBtn = document.querySelector(".restart");
 const displayDiv = document.querySelector(".display");
 const scoreReport = document.querySelector(".score-report");
 const roundReport = document.querySelector(".round-report");
+const gameReport = document.querySelector(".game-report");
 
 // Initialize score variables
 let humanScore = 0;
 let computerScore = 0;
-let winningScore = 0;
 
 // Display results in DOM
 scoreReport.textContent = `Your Score: ${humanScore} VS Computer Score: ${computerScore}`;
 roundReport.textContent = "The round winner is...";
+restartBtn.hidden = true;
 
 // Declare getComputerChoice function
 function getComputerChoice () {
@@ -47,9 +49,11 @@ function playGame(e) {
 
     // Display winner results
     if (humanScore === 5) {
-        displayDiv.textContent = "You win the game!";
+        gameReport.textContent = "You win the game!";
+        restartBtn.hidden = false;
     } else if (computerScore === 5) {
-        displayDiv.textContent = "Computer wins the game!";
+        gameReport.textContent = "Computer wins the game!";
+        restartBtn.hidden = false;
     }
 }
 
@@ -109,6 +113,14 @@ function playRound (humanChoice, computerChoice) {
     scoreReport.textContent = `Your Score: ${humanScore} | Computer Score: ${computerScore}`;
 }
 
+function restartGame() {
+    humanScore = 0;
+    computerScore = 0;
+    gameReport.textContent = "";
+    scoreReport.textContent = `Your Score: ${humanScore} VS Computer Score: ${computerScore}`;
+    roundReport.textContent = "The round winner is...";
+}
+
 // Add event listeners to player selection buttons
 rockBtn.addEventListener("click", (e) => {
     playGame(e);
@@ -121,3 +133,5 @@ paperBtn.addEventListener("click", (e) => {
 scissorsBtn.addEventListener("click", (e) => {
     playGame(e);
 });
+
+restartBtn.addEventListener("click", () => {restartGame()});
