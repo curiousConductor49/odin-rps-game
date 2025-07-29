@@ -2,6 +2,16 @@
     --bg-colour: #f2f3f5;
     --title-colour: #117870;
     --font-colour: #101828;
+    --paper-btn: #F54927;
+    --rock-btn: #275BF5;;
+    --scissors-btn: #F5B027;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
 h1 {
@@ -14,10 +24,10 @@ h1 {
 .display, .btn-box {
     background-color: var(--bg-colour);
     border-radius: 10px;
-    margin: auto;
     padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 1.4rem;
-    width: 35vw;
+    width: 50vw;
     height: 15vh;
     display: flex;
     justify-content: center;
@@ -31,13 +41,70 @@ h1 {
 
 .display .score-report {
     font-size: 1.6rem;
+    font-weight: bold;
 }
 .display .round-report {
     text-align: center;
 }
 
 .btn-box {
-    margin-top: 20px;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.paper, .rock, .scissors {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.paper {
+    color: var(--paper-btn);
+    border: 2px solid var(--paper-btn);
+}
+
+.rock {
+    color: var(--rock-btn);
+    border: 2px solid var(--rock-btn);
+}
+
+.scissors {
+    color: var(--scissors-btn);
+    border: 2px solid var(--scissors-btn);
+}
+
+.restart {
+    color: var(--title-colour);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    border-radius: 5px;
+    border: 2px solid var(--title-colour);
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+}
+
+.paper:hover {
+    background-color: var(--paper-btn);
+    color: #fff;
+    transition: background-color ease 0.3s;
+}
+
+.rock:hover {
+    background-color: var(--rock-btn);
+    color: #fff;
+    transition: background-color ease 0.3s;
+}
+
+.scissors:hover {
+    background-color: var(--scissors-btn);
+    color: #fff;
+    transition: background-color ease 0.3s;
+}
+
+.restart:hover {
+    background-color: var(--title-colour);
+    color: #fff;
+    transition: background-color ease 0.3s;
 }
