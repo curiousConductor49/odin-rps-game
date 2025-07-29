@@ -3,7 +3,6 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 const restartBtn = document.querySelector(".restart");
-const displayDiv = document.querySelector(".display");
 const scoreReport = document.querySelector(".score-report");
 const roundReport = document.querySelector(".round-report");
 const gameReport = document.querySelector(".game-report");
