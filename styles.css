@@ -1,0 +1,43 @@
+:root {
+    --bg-colour: #f2f3f5;
+    --title-colour: #117870;
+    --font-colour: #101828;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    color: var(--title-colour);
+}
+
+.display, .btn-box {
+    background-color: var(--bg-colour);
+    border-radius: 10px;
+    margin: auto;
+    padding: 10px;
+    font-size: 1.4rem;
+    width: 35vw;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.display {
+    flex-direction: column;
+}
+
+.display .score-report {
+    font-size: 1.6rem;
+}
+.display .round-report {
+    text-align: center;
+}
+
+.btn-box {
+    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
