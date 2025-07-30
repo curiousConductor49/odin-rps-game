@@ -4,5 +4,3 @@ Reach a score of 5 points (1 point per round win) before "Computer" does to win 
 ## Local Setup
 1. Clone the repo (SSH key): ```git clone git@github.com:curiousConductor49/odin-rps-game.git```
 2. Use VSCode's live preview extension to run it locally in the browser!
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
